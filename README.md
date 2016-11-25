@@ -1,4 +1,5 @@
 # CHESS FOR MEN
 
 by Dietrich Squinkifer
-for Pippin Barr
+
+made for Pippin Barr
