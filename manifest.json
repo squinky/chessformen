@@ -1,0 +1,7 @@
+{ "manifest": [
+{ "id": "board", "src": "img/board.png" },
+{ "id": "dude", "src": "img/dude.png" },
+{ "id": "field", "src": "img/field.png" },
+{ "id": "title", "src": "img/title.png" },
+{ "id": "win", "src": "img/win.png" }
+] }
