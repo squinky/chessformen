@@ -56,7 +56,7 @@ function loadingComplete()
 	stage.removeChild(loadText);
 
 	initTitle(queue.getResult("title"));
-	initGame(queue.getResult("field"), queue.getResult("board"), queue.getResult("dude"));
+	initGame(queue.getResult("field"), queue.getResult("board"), queue.getResult("dude"), queue.getResult("bang"));
 
 	showTitle();
 }
@@ -69,6 +69,10 @@ function tick()
 	if (currentScreen == SCREEN_LOADING)
 	{
 		loadText.text = "LOADING: "+Math.floor(queue.progress*100)+"%";
+	}
+	if (currentScreen == SCREEN_TITLE)
+	{
+		updateTitle(timeSinceLastTick);
 	}
 	if (currentScreen == SCREEN_GAME)
 	{

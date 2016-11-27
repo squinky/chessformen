@@ -25,3 +25,8 @@ function handleTitleClick(event)
 	hideTitle();
 	startGame();
 }
+
+function updateTitle(timeSinceLastTick)
+{
+	if (keysPressed.indexOf(true) > -1) handleTitleClick();
+}

@@ -1,10 +1,14 @@
-var field, board, dude, instructions;
+var field, board, dude, bang, instructions;
 
 var MOVE_SPEED = 20;
 var BG_SPEED_X = 4;
 var BG_SPEED_Y = 16;
 
-function initGame(f, b, d)
+var BANG_TOGGLE = 50;
+var gunFiring, gunfireSound;
+var bangTimeElapsed = 0;
+
+function initGame(f, b, d, ba)
 {
 	field = new createjs.Bitmap(f);
 	field.x = -128;
@@ -15,6 +19,11 @@ function initGame(f, b, d)
 	board.y = 0;
 
 	dude = new createjs.Bitmap(d);
+
+	bang = new createjs.Bitmap(ba);
+	bang.x = ACTUAL_WIDTH/2 - 35;
+	bang.y = ACTUAL_HEIGHT/2 - 40;
+	bang.alpha = 0;
 
 	instructions = new createjs.Text("WASD TO MOVE\nCLICK TO FIRE", "32px Black Ops One", "#ffffff");
 	instructions.textAlign = "right";
@@ -28,8 +37,12 @@ function startGame()
 
 	stage.addChild(field);
 	stage.addChild(board);
+	stage.addChild(bang);
 	stage.addChild(dude);
 	stage.addChild(instructions);
+
+	stage.addEventListener("stagemousedown", fireGun);
+	stage.addEventListener("stagemouseup", stopFiring);
 }
 
 function endGame()
@@ -60,4 +73,38 @@ function updateGame(timeSinceLastTick)
 		if (board.y > -100) board.y -= MOVE_SPEED;
 		if (field.y > -450) field.y -= BG_SPEED_Y;
 	}
+
+	if (gunFiring)
+	{
+		if (!gunfireSound) gunfireSound = createjs.Sound.play("gunfire", { loop: -1 });
+
+		bangTimeElapsed += timeSinceLastTick;
+		if (bangTimeElapsed >= BANG_TOGGLE)
+		{
+			if (bang.alpha == 0) bang.alpha = 1;
+			else bang.alpha = 0;
+			bangTimeElapsed = 0;
+		}
+	}
+	else
+	{
+		if (gunfireSound)
+		{
+			gunfireSound.stop();
+			gunfireSound = null;
+		}
+
+		bang.alpha = 0;
+		bangTimeElapsed = 0;
+	}
+}
+
+function fireGun(event)
+{
+	gunFiring = true;
+}
+
+function stopFiring(event)
+{
+	gunFiring = false;
 }
