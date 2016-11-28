@@ -56,25 +56,31 @@ function loadingComplete()
 	stage.removeChild(loadText);
 
 	initTitle(queue.getResult("title"));
+	initWin(queue.getResult("win"));
 
-	initGame(queue.getResult("field"), queue.getResult("board"), queue.getResult("dude"), queue.getResult("bang"));
+	initGame(
+		queue.getResult("field"),
+		queue.getResult("board"),
+		queue.getResult("dude"),
+		queue.getResult("bang"),
+		queue.getResult("splatter"));
 
-	addChessPiece(queue.getResult("rook"), 638, 100, 30, 136);
-	addChessPiece(queue.getResult("knight"), 783, 101, 35, 138);
-	addChessPiece(queue.getResult("bishop"), 935, 102, 37, 196);
-	addChessPiece(queue.getResult("queen"), 1080, 103, 38, 217);
-	addChessPiece(queue.getResult("king"), 1228, 104, 38, 238, true);
-	addChessPiece(queue.getResult("bishop"), 1372, 105, 37, 196);
-	addChessPiece(queue.getResult("knight"), 1518, 106, 35, 138);
-	addChessPiece(queue.getResult("rook"), 1668, 107, 30, 136);
-	addChessPiece(queue.getResult("pawn"), 600, 177, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 760, 178, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 920, 179, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 1075, 180, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 1236, 181, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 1388, 182, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 1550, 183, 38, 150);
-	addChessPiece(queue.getResult("pawn"), 1705, 184, 38, 150);
+	addChessPiece(queue.getResult("rook"), 638, 100, 30, 136, 2);
+	addChessPiece(queue.getResult("knight"), 783, 101, 35, 138, 2);
+	addChessPiece(queue.getResult("bishop"), 935, 102, 37, 196, 2);
+	addChessPiece(queue.getResult("queen"), 1080, 103, 38, 217, 4);
+	addChessPiece(queue.getResult("king"), 1228, 104, 38, 238, 4, true);
+	addChessPiece(queue.getResult("bishop"), 1372, 105, 37, 196, 2);
+	addChessPiece(queue.getResult("knight"), 1518, 106, 35, 138, 2);
+	addChessPiece(queue.getResult("rook"), 1668, 107, 30, 136, 2);
+	addChessPiece(queue.getResult("pawn"), 600, 177, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 760, 178, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 920, 179, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 1075, 180, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 1236, 181, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 1388, 182, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 1550, 183, 38, 150, 1);
+	addChessPiece(queue.getResult("pawn"), 1705, 184, 38, 150, 1);
 
 	showTitle();
 }
