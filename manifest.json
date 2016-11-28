@@ -1,8 +1,14 @@
 { "manifest": [
 { "id": "bang", "src": "img/bang.png" },
+{ "id": "bishop", "src": "img/bishop.png" },
 { "id": "board", "src": "img/board.png" },
 { "id": "dude", "src": "img/dude.png" },
 { "id": "field", "src": "img/field.png" },
+{ "id": "king", "src": "img/king.png" },
+{ "id": "knight", "src": "img/knight.png" },
+{ "id": "pawn", "src": "img/pawn.png" },
+{ "id": "queen", "src": "img/queen.png" },
+{ "id": "rook", "src": "img/rook.png" },
 { "id": "title", "src": "img/title.png" },
 { "id": "win", "src": "img/win.png" },
 { "id": "gunfire", "src": "sfx/gunfire.ogg" }

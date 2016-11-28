@@ -1,4 +1,4 @@
-var field, board, dude, bang, instructions;
+var field, board, boardBmp, dude, bang, instructions;
 
 var MOVE_SPEED = 20;
 var BG_SPEED_X = 4;
@@ -14,9 +14,11 @@ function initGame(f, b, d, ba)
 	field.x = -128;
 	field.y = -400;
 
-	board = new createjs.Bitmap(b);
+	board = new createjs.Container();
 	board.x = -640;
 	board.y = 0;
+
+	boardBmp = new createjs.Bitmap(b);
 
 	dude = new createjs.Bitmap(d);
 
@@ -40,6 +42,12 @@ function startGame()
 	stage.addChild(bang);
 	stage.addChild(dude);
 	stage.addChild(instructions);
+
+	board.addChild(boardBmp);
+	for (var i = 0; i < chessPieces.length; i++)
+	{
+		board.addChild(chessPieces[i].bmp);
+	}
 
 	stage.addEventListener("stagemousedown", fireGun);
 	stage.addEventListener("stagemouseup", stopFiring);
