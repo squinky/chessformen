@@ -19,6 +19,8 @@ var KEY_UP = 87;
 var KEY_RIGHT = 68;
 var KEY_DOWN = 83;
 
+var ARCADE_MODE = true;
+
 window.addEventListener('resize', resize, false);
 
 function init()
@@ -104,6 +106,10 @@ function tick()
 	if (currentScreen == SCREEN_GAME)
 	{
 		updateGame(timeSinceLastTick);
+	}
+	if (currentScreen == SCREEN_WIN && ARCADE_MODE)
+	{
+		updateWin(timeSinceLastTick);
 	}
 	
 	stage.update();
