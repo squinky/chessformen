@@ -1,5 +1,6 @@
 var field, board, boardBmp, dude, bang, splatter, instructions;
 var blood1, blood2, blood3;
+var leftBox, rightBox, topBox, bottomBox;
 
 var MOVE_SPEED = 20;
 var BG_SPEED_X = 4;
@@ -43,6 +44,15 @@ function initGame(f, b, d, ba, s, b1, b2, b3)
 	instructions.textAlign = "right";
 	instructions.x = ACTUAL_WIDTH - 40;
 	instructions.y = ACTUAL_HEIGHT - 100;
+
+	leftBox = new createjs.Shape();
+	leftBox.graphics.beginFill("#000000").drawRect(-399, 0, 400, ACTUAL_HEIGHT);
+	rightBox = new createjs.Shape();
+	rightBox.graphics.beginFill("#000000").drawRect(ACTUAL_WIDTH, 0, 400, ACTUAL_HEIGHT);
+	topBox = new createjs.Shape();
+	topBox.graphics.beginFill("#000000").drawRect(0, -399, ACTUAL_WIDTH, 400);
+	bottomBox = new createjs.Shape();
+	bottomBox.graphics.beginFill("#000000").drawRect(0, ACTUAL_HEIGHT, ACTUAL_WIDTH, 400);
 }
 
 function startGame()
@@ -55,6 +65,11 @@ function startGame()
 	stage.addChild(bang);
 	stage.addChild(dude);
 	stage.addChild(instructions);
+
+	stage.addChild(leftBox);
+	stage.addChild(rightBox);
+	stage.addChild(topBox);
+	stage.addChild(bottomBox);
 
 	board.addChild(boardBmp);
 	for (var i = 0; i < chessPieces.length; i++)

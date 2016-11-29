@@ -16,7 +16,7 @@ function ChessPiece(bmp, x, y, regX, regY, healthMultiplier, isKing)
 
 ChessPiece.prototype.move = function()
 {
-	var p = board.localToGlobal(this.bmp.x, this.bmp.y);
+	var p = board.localToLocal(this.bmp.x, this.bmp.y, stage);
 	
 	if (p.x > ACTUAL_WIDTH/2 - MOVE_BUFFER && p.x < ACTUAL_WIDTH/2 + MOVE_BUFFER &&
 		p.y > ACTUAL_HEIGHT/2 && p.y < ACTUAL_HEIGHT/2 + MOVE_BUFFER*3)
@@ -30,7 +30,7 @@ ChessPiece.prototype.move = function()
 
 ChessPiece.prototype.isTargeted = function()
 {
-	var p = this.bmp.globalToLocal(ACTUAL_WIDTH/2, ACTUAL_HEIGHT/2);
+	var p = stage.localToLocal(ACTUAL_WIDTH/2, ACTUAL_HEIGHT/2, this.bmp);
 	return this.bmp.hitTest(p.x, p.y);
 }
 
