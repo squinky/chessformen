@@ -1,16 +1,18 @@
 var field, board, boardBmp, dude, bang, splatter, instructions;
-
-var targetedPiece;
+var blood1, blood2, blood3;
 
 var MOVE_SPEED = 20;
 var BG_SPEED_X = 4;
 var BG_SPEED_Y = 16;
 
 var BANG_TOGGLE = 50;
-var gunFiring, gunfireSound;
+var gunFiring, gunfireSound, targetedPiece;
 var bangTimeElapsed = 0;
 
-function initGame(f, b, d, ba, s)
+var SHOTS_TO_BLOOD = 50;
+var shotsFired = 0;
+
+function initGame(f, b, d, ba, s, b1, b2, b3)
 {
 	field = new createjs.Bitmap(f);
 	field.x = -128;
@@ -21,6 +23,9 @@ function initGame(f, b, d, ba, s)
 	board.y = 0;
 
 	boardBmp = new createjs.Bitmap(b);
+	blood1 = new createjs.Bitmap(b1);
+	blood2 = new createjs.Bitmap(b2);
+	blood3 = new createjs.Bitmap(b3);
 
 	dude = new createjs.Bitmap(d);
 
@@ -96,6 +101,7 @@ function updateGame(timeSinceLastTick)
 	targetedPiece = null;
 	for (var i = 0; i < chessPieces.length; i++)
 	{
+		chessPieces[i].move();
 		if (chessPieces[i].isTargeted()) targetedPiece = chessPieces[i];
 	}
 
@@ -107,6 +113,11 @@ function updateGame(timeSinceLastTick)
 		{
 			targetedPiece.hit();
 			splatter.alpha = 1;
+			shotsFired++;
+
+			if (shotsFired == SHOTS_TO_BLOOD) stage.addChild(blood1);
+			if (shotsFired == SHOTS_TO_BLOOD*2) stage.addChild(blood2);
+			if (shotsFired == SHOTS_TO_BLOOD*5) stage.addChild(blood3);
 		}
 
 		if (!gunfireSound) gunfireSound = createjs.Sound.play("gunfire", { loop: -1 });

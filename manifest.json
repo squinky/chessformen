@@ -1,6 +1,9 @@
 { "manifest": [
 { "id": "bang", "src": "img/bang.png" },
 { "id": "bishop", "src": "img/bishop.png" },
+{ "id": "blood-1", "src": "img/blood-1.png" },
+{ "id": "blood-2", "src": "img/blood-2.png" },
+{ "id": "blood-3", "src": "img/blood-3.png" },
 { "id": "board", "src": "img/board.png" },
 { "id": "dude", "src": "img/dude.png" },
 { "id": "field", "src": "img/field.png" },

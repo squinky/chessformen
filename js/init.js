@@ -63,7 +63,10 @@ function loadingComplete()
 		queue.getResult("board"),
 		queue.getResult("dude"),
 		queue.getResult("bang"),
-		queue.getResult("splatter"));
+		queue.getResult("splatter"),
+		queue.getResult("blood-1"),
+		queue.getResult("blood-2"),
+		queue.getResult("blood-3"));
 
 	addChessPiece(queue.getResult("rook"), 638, 100, 30, 136, 2);
 	addChessPiece(queue.getResult("knight"), 783, 101, 35, 138, 2);
